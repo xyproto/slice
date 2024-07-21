@@ -1,4 +1,4 @@
-package missingstslib
+package missingstdlib
 
 import (
 	"strings"
