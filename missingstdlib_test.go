@@ -41,6 +41,26 @@ func TestReplaceFirst(t *testing.T) {
 	}
 }
 
+func TestReplaceLast(t *testing.T) {
+	result := ReplaceLast("hello world", "l", "x")
+	expected := "hello worxd"
+	if result != expected {
+		t.Errorf("ReplaceLast() = %v; want %v", result, expected)
+	}
+
+	result = ReplaceLast("hello world world", "world", "planet")
+	expected = "hello world planet"
+	if result != expected {
+		t.Errorf("ReplaceLast() = %v; want %v", result, expected)
+	}
+
+	result = ReplaceLast("hello", "z", "x")
+	expected = "hello"
+	if result != expected {
+		t.Errorf("ReplaceLast() = %v; want %v", result, expected)
+	}
+}
+
 func TestPartition(t *testing.T) {
 	arr := []int{1, 2, 3, 4, 5}
 	even, odd := Partition(arr, func(n int) bool { return n%2 == 0 })
