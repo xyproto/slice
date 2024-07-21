@@ -167,7 +167,7 @@ func isPermutation[T comparable](a, b []T) bool {
 	for _, v := range a {
 		counts[v]++
 	}
-	for _, v := range b) {
+	for _, v := range b {
 		counts[v]--
 		if counts[v] < 0 {
 			return false
