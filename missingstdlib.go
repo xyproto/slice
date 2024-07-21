@@ -37,6 +37,28 @@ func ReplaceLast(haystack, needle, replacement string) string {
 	return haystack[:index] + replacement + haystack[index+len(needle):]
 }
 
+// ReplaceFirstInSlice replaces the first occurrence of needle with replacement in a slice.
+func ReplaceFirstInSlice[T comparable](haystack []T, needle, replacement T) []T {
+	for i, v := range haystack {
+		if v == needle {
+			haystack[i] = replacement
+			break
+		}
+	}
+	return haystack
+}
+
+// ReplaceLastInSlice replaces the last occurrence of needle with replacement in a slice.
+func ReplaceLastInSlice[T comparable](haystack []T, needle, replacement T) []T {
+	for i := len(haystack) - 1; i >= 0; i-- {
+		if haystack[i] == needle {
+			haystack[i] = replacement
+			break
+		}
+	}
+	return haystack
+}
+
 // Partition partitions a slice into two slices based on a predicate function.
 func Partition[T any](arr []T, pred func(T) bool) ([]T, []T) {
 	truePart, falsePart := []T{}, []T{}
