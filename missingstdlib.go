@@ -23,9 +23,18 @@ func Reverse[T any](s []T) []T {
 	return reversed
 }
 
-// ReplaceFirst replaces the first occurrence of old with new in a string.
-func ReplaceFirst[T ~string](s, old, new T) T {
-	return T(strings.Replace(string(s), string(old), string(new), 1))
+// ReplaceFirst replaces the first occurrence of needle with replacement in haystack.
+func ReplaceFirst(haystack, needle, replacement string) string {
+	return strings.Replace(haystack, needle, replacement, 1)
+}
+
+// ReplaceLast replaces the last occurrence of needle with replacement in haystack.
+func ReplaceLast(haystack, needle, replacement string) string {
+	index := strings.LastIndex(haystack, needle)
+	if index == -1 {
+		return haystack
+	}
+	return haystack[:index] + replacement + haystack[index+len(needle):]
 }
 
 // Partition partitions a slice into two slices based on a predicate function.
