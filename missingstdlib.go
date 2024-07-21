@@ -101,14 +101,14 @@ func Shuffle[T any](arr []T) {
 }
 
 // Zip combines multiple slices into a slice of tuples.
-func Zip[T any, U any](a []T, b []U) [][2]interface{} {
+func Zip[T any, U any](a []T, b []U) []struct{ First T; Second U } {
 	length := len(a)
 	if len(b) < length {
 		length = len(b)
 	}
-	zipped := make([][2]interface{}, length)
+	zipped := make([]struct{ First T; Second U }, length)
 	for i := 0; i < length; i++ {
-		zipped[i] = [2]interface{}{a[i], b[i]}
+		zipped[i] = struct{ First T; Second U }{a[i], b[i]}
 	}
 	return zipped
 }
