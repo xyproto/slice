@@ -34,14 +34,30 @@ func TestReverse(t *testing.T) {
 }
 
 func TestReplaceFirst(t *testing.T) {
+	// Test with strings
 	result := ReplaceFirst("hello world", "l", "x")
 	expected := "hexlo world"
 	if result != expected {
 		t.Errorf("ReplaceFirst() = %v; want %v", result, expected)
 	}
+
+	// Test with slices of strings
+	resultSlice := ReplaceFirstInSlice([]string{"hello", "world", "hello"}, "hello", "hi")
+	expectedSlice := []string{"hi", "world", "hello"}
+	if !slicesEqual(resultSlice, expectedSlice) {
+		t.Errorf("ReplaceFirstInSlice() = %v; want %v", resultSlice, expectedSlice)
+	}
+
+	// Test with slices of ints
+	resultInt := ReplaceFirstInSlice([]int{1, 2, 3, 1, 4}, 1, 9)
+	expectedInt := []int{9, 2, 3, 1, 4}
+	if !slicesEqual(resultInt, expectedInt) {
+		t.Errorf("ReplaceFirstInSlice() = %v; want %v", resultInt, expectedInt)
+	}
 }
 
 func TestReplaceLast(t *testing.T) {
+	// Test with strings
 	result := ReplaceLast("hello world", "l", "x")
 	expected := "hello worxd"
 	if result != expected {
@@ -58,6 +74,20 @@ func TestReplaceLast(t *testing.T) {
 	expected = "hello"
 	if result != expected {
 		t.Errorf("ReplaceLast() = %v; want %v", result, expected)
+	}
+
+	// Test with slices of strings
+	resultSlice := ReplaceLastInSlice([]string{"hello", "world", "hello"}, "hello", "hi")
+	expectedSlice := []string{"hello", "world", "hi"}
+	if !slicesEqual(resultSlice, expectedSlice) {
+		t.Errorf("ReplaceLastInSlice() = %v; want %v", resultSlice, expectedSlice)
+	}
+
+	// Test with slices of ints
+	resultInt := ReplaceLastInSlice([]int{1, 2, 3, 1, 4}, 1, 9)
+	expectedInt := []int{1, 2, 3, 9, 4}
+	if !slicesEqual(resultInt, expectedInt) {
+		t.Errorf("ReplaceLastInSlice() = %v; want %v", resultInt, expectedInt)
 	}
 }
 
