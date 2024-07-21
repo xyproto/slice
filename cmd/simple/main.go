@@ -49,7 +49,7 @@ func main() {
 	// Zip int
 	a = []int{1, 2, 3}
 	b = []int{4, 5, 6}
-	fmt.Println(ms.Zip(a, b)) // Output: [[1 4] [2 5] [3 6]]
+	fmt.Println(ms.Zip(a, b)) // Output: [{1 4} {2 5} {3 6}]
 
 	// Zip int and string
 	a = []int{1, 2, 3}
