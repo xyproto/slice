@@ -1,17 +1,16 @@
-package missingstslib
+package missingstdlib
 
 import (
 	"math/rand"
 	"strings"
-	"unicode"
 )
 
 // Capitalize capitalizes the first letter of a string.
-func Capitalize[T ~string](s T) T {
+func Capitalize(s string) string {
 	if len(s) == 0 {
 		return s
 	}
-	return T(strings.ToUpper(string(s[0])) + strings.ToLower(s[1:]))
+	return strings.ToUpper(string(s[0])) + strings.ToLower(s[1:])
 }
 
 // Reverse reverses a slice.

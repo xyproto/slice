@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
-	ms "github.com/xyproto/missingstslib"
+	"strings"
+
+	ms "github.com/xyproto/missingstdlib"
 )
 
 func main() {
@@ -12,7 +14,7 @@ func main() {
 	fmt.Println(ms.Capitalize("hello world")) // Output: Hello world
 
 	// Reverse
-	fmt.Println(ms.Reverse([]rune("Hello")))     // Output: [o l l e H]
+	fmt.Println(ms.Reverse([]rune("Hello")))      // Output: [o l l e H]
 	fmt.Println(ms.Reverse([]int{1, 2, 3, 4, 5})) // Output: [5 4 3 2 1]
 
 	// ReplaceFirst
@@ -46,8 +48,8 @@ func main() {
 
 	// Zip
 	a = []int{1, 2, 3}
-	b = []string{"a", "b", "c"}
-	fmt.Println(ms.Zip(a, b)) // Output: [[1 a] [2 b] [3 c]]
+	b = []int{4, 5, 6}
+	fmt.Println(ms.Zip(a, b)) // Output: [[1 4] [2 5] [3 6]]
 
 	// Contains
 	fmt.Println(ms.Contains(arr, 3)) // Output: true
