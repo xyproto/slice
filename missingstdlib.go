@@ -26,6 +26,13 @@ func Reverse[T any](s []T) []T {
 	return reversed
 }
 
+// ReverseInPlace reverses a slice in-place.
+func ReverseInPlace[T any](s []T) {
+	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
+		s[i], s[j] = s[j], s[i]
+	}
+}
+
 // ReplaceFirst replaces the first occurrence of needle with replacement in haystack.
 func ReplaceFirst(haystack, needle, replacement string) string {
 	return strings.Replace(haystack, needle, replacement, 1)
