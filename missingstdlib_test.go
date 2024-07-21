@@ -1,4 +1,4 @@
-package missingstdlib
+package missingstslib
 
 import (
 	"strings"
@@ -167,7 +167,7 @@ func isPermutation[T comparable](a, b []T) bool {
 	for _, v := range a {
 		counts[v]++
 	}
-	for _, v := range b {
+	for _, v := range b) {
 		counts[v]--
 		if counts[v] < 0 {
 			return false
@@ -176,12 +176,12 @@ func isPermutation[T comparable](a, b []T) bool {
 	return true
 }
 
-func tuplesEqual(a, b [][2]interface{}) bool {
+func tuplesEqual(a, b []struct{ First int; Second string }) bool {
 	if len(a) != len(b) {
 		return false
 	}
 	for i := range a {
-		if a[i][0] != b[i][0] || a[i][1] != b[i][1] {
+		if a[i].First != b[i].First || a[i].Second != b[i].Second {
 			return false
 		}
 	}
