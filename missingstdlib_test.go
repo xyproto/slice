@@ -103,7 +103,7 @@ func TestZip(t *testing.T) {
 	a := []int{1, 2, 3}
 	b := []string{"a", "b", "c"}
 	result := Zip(a, b)
-	expected := [][2]interface{}{{1, "a"}, {2, "b"}, {3, "c"}}
+	expected := []struct{ First int; Second string }{{1, "a"}, {2, "b"}, {3, "c"}}
 	if !tuplesEqual(result, expected) {
 		t.Errorf("Zip() = %v; want %v", result, expected)
 	}
