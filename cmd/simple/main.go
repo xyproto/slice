@@ -8,8 +8,6 @@ import (
 )
 
 func main() {
-	// Example usages of the missingstslib package
-
 	// Capitalize
 	fmt.Println(ms.Capitalize("hello world")) // Output: Hello world
 
@@ -20,6 +18,9 @@ func main() {
 	// ReplaceFirst
 	fmt.Println(ms.ReplaceFirst("hello world", "l", "x")) // Output: hexlo world
 
+	// ReplaceLast
+	fmt.Println(ms.ReplaceLast("hello world", "l", "x")) // Output: hello worxd
+	
 	// Partition
 	arr := []int{1, 2, 3, 4, 5}
 	even, odd := ms.Partition(arr, func(n int) bool { return n%2 == 0 })
