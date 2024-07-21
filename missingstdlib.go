@@ -3,6 +3,7 @@ package missingstdlib
 import (
 	"math/rand"
 	"strings"
+        "unicode"
 )
 
 // Capitalize capitalizes the first letter of a string.
@@ -10,7 +11,9 @@ func Capitalize(s string) string {
 	if len(s) == 0 {
 		return s
 	}
-	return strings.ToUpper(string(s[0])) + strings.ToLower(s[1:])
+	runes := []rune(s)
+	runes[0] = unicode.ToUpper(runes[0])
+	return string(runes)
 }
 
 // Reverse reverses a slice.
