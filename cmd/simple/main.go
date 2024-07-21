@@ -46,11 +46,16 @@ func main() {
 	ms.Shuffle(arr)
 	fmt.Println(arr) // Output: [3 5 4 1 2] (example, actual output may vary)
 
-	// Zip
+	// Zip int
 	a = []int{1, 2, 3}
 	b = []int{4, 5, 6}
 	fmt.Println(ms.Zip(a, b)) // Output: [[1 4] [2 5] [3 6]]
 
+	// Zip int and string
+	a = []int{1, 2, 3}
+	b = []string{"a", "b", "c"}
+	fmt.Println(ms.Zip(a, b)) // Output: [[1 a] [2 b] [3 c]]
+	
 	// Contains
 	fmt.Println(ms.Contains(arr, 3)) // Output: true
 
