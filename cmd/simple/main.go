@@ -54,7 +54,7 @@ func main() {
 	// Zip int and string
 	a = []int{1, 2, 3}
 	b = []string{"a", "b", "c"}
-	fmt.Println(ms.Zip(a, b)) // Output: [[1 a] [2 b] [3 c]]
+	fmt.Println(ms.Zip(a, b)) // Output: [{1 a} {2 b} {3 c}]
 	
 	// Contains
 	fmt.Println(ms.Contains(arr, 3)) // Output: true
