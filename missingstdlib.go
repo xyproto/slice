@@ -1,6 +1,5 @@
 package missingstdlib
 
-
 import (
 	"math/rand"
 	"strings"
