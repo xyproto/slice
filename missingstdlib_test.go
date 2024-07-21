@@ -33,6 +33,28 @@ func TestReverse(t *testing.T) {
 	}
 }
 
+func TestReverseInPlace(t *testing.T) {
+	runes := []rune("Hello")
+	ReverseInPlace(runes)
+	expected := []rune("olleH")
+	for i, v := range runes {
+		if v != expected[i] {
+			t.Errorf("ReverseInPlace() = %v; want %v", string(runes), string(expected))
+			break
+		}
+	}
+
+	ints := []int{1, 2, 3, 4, 5}
+	ReverseInPlace(ints)
+	intExpected := []int{5, 4, 3, 2, 1}
+	for i, v := range ints {
+		if v != intExpected[i] {
+			t.Errorf("ReverseInPlace() = %v; want %v", ints, intExpected)
+			break
+		}
+	}
+}
+
 func TestReplaceFirst(t *testing.T) {
 	// Test with strings
 	result := ReplaceFirst("hello world", "l", "x")
