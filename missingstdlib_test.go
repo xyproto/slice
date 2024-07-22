@@ -6,30 +6,24 @@ import (
 )
 
 func TestCapitalize(t *testing.T) {
-	result := Capitalize("hello world")
-	expected := "Hello world"
-	if result != expected {
-		t.Errorf("Capitalize() = %v; want %v", result, expected)
+	result := Capitalize([]rune("hello world"))
+	expected := []rune("Hello world")
+	if !slicesEqual(result, expected) {
+		t.Errorf("Capitalize() = %v; want %v", string(result), string(expected))
 	}
 }
 
 func TestReverse(t *testing.T) {
 	result := Reverse([]rune("Hello"))
 	expected := []rune("olleH")
-	for i, v := range result {
-		if v != expected[i] {
-			t.Errorf("Reverse() = %v; want %v", string(result), string(expected))
-			break
-		}
+	if !slicesEqual(result, expected) {
+		t.Errorf("Reverse() = %v; want %v", string(result), string(expected))
 	}
 
 	intResult := Reverse([]int{1, 2, 3, 4, 5})
 	intExpected := []int{5, 4, 3, 2, 1}
-	for i, v := range intResult {
-		if v != intExpected[i] {
-			t.Errorf("Reverse() = %v; want %v", intResult, intExpected)
-			break
-		}
+	if !slicesEqual(intResult, intExpected) {
+		t.Errorf("Reverse() = %v; want %v", intResult, intExpected)
 	}
 }
 
@@ -37,79 +31,47 @@ func TestReverseInPlace(t *testing.T) {
 	runes := []rune("Hello")
 	ReverseInPlace(runes)
 	expected := []rune("olleH")
-	for i, v := range runes {
-		if v != expected[i] {
-			t.Errorf("ReverseInPlace() = %v; want %v", string(runes), string(expected))
-			break
-		}
+	if !slicesEqual(runes, expected) {
+		t.Errorf("ReverseInPlace() = %v; want %v", string(runes), string(expected))
 	}
 
 	ints := []int{1, 2, 3, 4, 5}
 	ReverseInPlace(ints)
 	intExpected := []int{5, 4, 3, 2, 1}
-	for i, v := range ints {
-		if v != intExpected[i] {
-			t.Errorf("ReverseInPlace() = %v; want %v", ints, intExpected)
-			break
-		}
+	if !slicesEqual(ints, intExpected) {
+		t.Errorf("ReverseInPlace() = %v; want %v", ints, intExpected)
 	}
 }
 
 func TestReplaceFirst(t *testing.T) {
-	// Test with strings
-	result := ReplaceFirst("hello world", "l", "x")
-	expected := "hexlo world"
-	if result != expected {
-		t.Errorf("ReplaceFirst() = %v; want %v", result, expected)
-	}
-
 	// Test with slices of strings
-	resultSlice := ReplaceFirstInSlice([]string{"hello", "world", "hello"}, "hello", "hi")
+	resultSlice := ReplaceFirst([]string{"hello", "world", "hello"}, "hello", "hi")
 	expectedSlice := []string{"hi", "world", "hello"}
 	if !slicesEqual(resultSlice, expectedSlice) {
-		t.Errorf("ReplaceFirstInSlice() = %v; want %v", resultSlice, expectedSlice)
+		t.Errorf("ReplaceFirst() = %v; want %v", resultSlice, expectedSlice)
 	}
 
 	// Test with slices of ints
-	resultInt := ReplaceFirstInSlice([]int{1, 2, 3, 1, 4}, 1, 9)
+	resultInt := ReplaceFirst([]int{1, 2, 3, 1, 4}, 1, 9)
 	expectedInt := []int{9, 2, 3, 1, 4}
 	if !slicesEqual(resultInt, expectedInt) {
-		t.Errorf("ReplaceFirstInSlice() = %v; want %v", resultInt, expectedInt)
+		t.Errorf("ReplaceFirst() = %v; want %v", resultInt, expectedInt)
 	}
 }
 
 func TestReplaceLast(t *testing.T) {
-	// Test with strings
-	result := ReplaceLast("hello world", "l", "x")
-	expected := "hello worxd"
-	if result != expected {
-		t.Errorf("ReplaceLast() = %v; want %v", result, expected)
-	}
-
-	result = ReplaceLast("hello world world", "world", "planet")
-	expected = "hello world planet"
-	if result != expected {
-		t.Errorf("ReplaceLast() = %v; want %v", result, expected)
-	}
-
-	result = ReplaceLast("hello", "z", "x")
-	expected = "hello"
-	if result != expected {
-		t.Errorf("ReplaceLast() = %v; want %v", result, expected)
-	}
-
 	// Test with slices of strings
-	resultSlice := ReplaceLastInSlice([]string{"hello", "world", "hello"}, "hello", "hi")
+	resultSlice := ReplaceLast([]string{"hello", "world", "hello"}, "hello", "hi")
 	expectedSlice := []string{"hello", "world", "hi"}
 	if !slicesEqual(resultSlice, expectedSlice) {
-		t.Errorf("ReplaceLastInSlice() = %v; want %v", resultSlice, expectedSlice)
+		t.Errorf("ReplaceLast() = %v; want %v", resultSlice, expectedSlice)
 	}
 
 	// Test with slices of ints
-	resultInt := ReplaceLastInSlice([]int{1, 2, 3, 1, 4}, 1, 9)
+	resultInt := ReplaceLast([]int{1, 2, 3, 1, 4}, 1, 9)
 	expectedInt := []int{1, 2, 3, 9, 4}
 	if !slicesEqual(resultInt, expectedInt) {
-		t.Errorf("ReplaceLastInSlice() = %v; want %v", resultInt, expectedInt)
+		t.Errorf("ReplaceLast() = %v; want %v", resultInt, expectedInt)
 	}
 }
 
@@ -175,7 +137,10 @@ func TestZip(t *testing.T) {
 	a := []int{1, 2, 3}
 	b := []string{"a", "b", "c"}
 	result := Zip(a, b)
-	expected := []struct{ First int; Second string }{{1, "a"}, {2, "b"}, {3, "c"}}
+	expected := []struct {
+		First  int
+		Second string
+	}{{1, "a"}, {2, "b"}, {3, "c"}}
 	if !tuplesEqual(result, expected) {
 		t.Errorf("Zip() = %v; want %v", result, expected)
 	}
@@ -248,7 +213,10 @@ func isPermutation[T comparable](a, b []T) bool {
 	return true
 }
 
-func tuplesEqual(a, b []struct{ First int; Second string }) bool {
+func tuplesEqual(a, b []struct {
+	First  int
+	Second string
+}) bool {
 	if len(a) != len(b) {
 		return false
 	}

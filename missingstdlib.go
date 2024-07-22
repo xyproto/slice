@@ -2,21 +2,21 @@ package missingstdlib
 
 import (
 	"math/rand"
-	"strings"
-        "unicode"
+	"unicode"
 )
 
-// Capitalize capitalizes the first letter of a string.
-func Capitalize(s string) string {
-	if len(s) == 0 {
-		return s
+// Capitalize returns a new slice of runes with the first letter capitalized.
+func Capitalize(runes []rune) []rune {
+	if len(runes) == 0 {
+		return runes
 	}
-	runes := []rune(s)
-	runes[0] = unicode.ToUpper(runes[0])
-	return string(runes)
+	newRunes := make([]rune, len(runes))
+	copy(newRunes, runes)
+	newRunes[0] = unicode.ToUpper(newRunes[0])
+	return newRunes
 }
 
-// Reverse reverses a slice.
+// Reverse returns a new slice that is the reverse of the input slice.
 func Reverse[T any](s []T) []T {
 	length := len(s)
 	reversed := make([]T, length)
@@ -26,29 +26,15 @@ func Reverse[T any](s []T) []T {
 	return reversed
 }
 
-// ReverseInPlace reverses a slice in-place.
+// ReverseInPlace reverses the input slice in place.
 func ReverseInPlace[T any](s []T) {
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
 		s[i], s[j] = s[j], s[i]
 	}
 }
 
-// ReplaceFirst replaces the first occurrence of needle with replacement in haystack.
-func ReplaceFirst(haystack, needle, replacement string) string {
-	return strings.Replace(haystack, needle, replacement, 1)
-}
-
-// ReplaceLast replaces the last occurrence of needle with replacement in haystack.
-func ReplaceLast(haystack, needle, replacement string) string {
-	index := strings.LastIndex(haystack, needle)
-	if index == -1 {
-		return haystack
-	}
-	return haystack[:index] + replacement + haystack[index+len(needle):]
-}
-
-// ReplaceFirstInSlice replaces the first occurrence of needle with replacement in a slice.
-func ReplaceFirstInSlice[T comparable](haystack []T, needle, replacement T) []T {
+// ReplaceFirst replaces the first occurrence of needle with replacement in a slice.
+func ReplaceFirst[T comparable](haystack []T, needle, replacement T) []T {
 	for i, v := range haystack {
 		if v == needle {
 			haystack[i] = replacement
@@ -58,8 +44,8 @@ func ReplaceFirstInSlice[T comparable](haystack []T, needle, replacement T) []T 
 	return haystack
 }
 
-// ReplaceLastInSlice replaces the last occurrence of needle with replacement in a slice.
-func ReplaceLastInSlice[T comparable](haystack []T, needle, replacement T) []T {
+// ReplaceLast replaces the last occurrence of needle with replacement in a slice.
+func ReplaceLast[T comparable](haystack []T, needle, replacement T) []T {
 	for i := len(haystack) - 1; i >= 0; i-- {
 		if haystack[i] == needle {
 			haystack[i] = replacement
@@ -69,7 +55,7 @@ func ReplaceLastInSlice[T comparable](haystack []T, needle, replacement T) []T {
 	return haystack
 }
 
-// Partition partitions a slice into two slices based on a predicate function.
+// Partition partitions the input slice into two slices based on the predicate function.
 func Partition[T any](arr []T, pred func(T) bool) ([]T, []T) {
 	truePart, falsePart := []T{}, []T{}
 	for _, v := range arr {
@@ -134,22 +120,31 @@ func Unique[T comparable](arr []T) []T {
 	return result
 }
 
-// Shuffle randomly shuffles the elements of a slice.
+// Shuffle randomly shuffles the elements of a slice in place.
 func Shuffle[T any](arr []T) {
 	rand.Shuffle(len(arr), func(i, j int) {
 		arr[i], arr[j] = arr[j], arr[i]
 	})
 }
 
-// Zip combines multiple slices into a slice of tuples.
-func Zip[T any, U any](a []T, b []U) []struct{ First T; Second U } {
+// Zip combines two slices into a slice of tuples.
+func Zip[T any, U any](a []T, b []U) []struct {
+	First  T
+	Second U
+} {
 	length := len(a)
 	if len(b) < length {
 		length = len(b)
 	}
-	zipped := make([]struct{ First T; Second U }, length)
+	zipped := make([]struct {
+		First  T
+		Second U
+	}, length)
 	for i := 0; i < length; i++ {
-		zipped[i] = struct{ First T; Second U }{a[i], b[i]}
+		zipped[i] = struct {
+			First  T
+			Second U
+		}{a[i], b[i]}
 	}
 	return zipped
 }

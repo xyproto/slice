@@ -1,6 +1,7 @@
+
 # missingstdlib
 
-`missingstdlib` is a Go package that provides a collection of utility functions that are often needed but missing from the Go standard library. This package includes functions for manipulating strings and slices, such as reversing, shuffling, finding unique elements, and more.
+`missingstdlib` is a Go package that provides a collection of utility functions that are often needed but missing from the Go standard library. This package includes functions for manipulating slices, such as reversing, shuffling, finding unique elements, and more.
 
 ## Installation
 
@@ -16,12 +17,12 @@ Here are some examples of how to use the functions provided by `missingstdlib`.
 
 ### Capitalize
 
-Capitalizes the first letter of a string.
+Capitalizes the first letter of a slice of runes and returns a new slice.
 
 ```go
 import ms "github.com/xyproto/missingstdlib"
 
-fmt.Println(ms.Capitalize("hello world")) // Output: Hello world
+fmt.Println(string(ms.Capitalize([]rune("hello world")))) // Output: Hello world
 ```
 
 ### Reverse
@@ -48,36 +49,16 @@ fmt.Println(arr) // Output: [5 4 3 2 1]
 
 ### ReplaceFirst
 
-Replaces the first occurrence of `needle` with `replacement` in `haystack`.
-
-```go
-import ms "github.com/xyproto/missingstdlib"
-
-fmt.Println(ms.ReplaceFirst("hello world", "l", "x")) // Output: hexlo world
-```
-
-### ReplaceLast
-
-Replaces the last occurrence of `needle` with `replacement` in `haystack`.
-
-```go
-import ms "github.com/xyproto/missingstdlib"
-
-fmt.Println(ms.ReplaceLast("hello world", "l", "x")) // Output: hello worxd
-```
-
-### ReplaceFirstInSlice
-
 Replaces the first occurrence of `needle` with `replacement` in a slice.
 
 ```go
 import ms "github.com/xyproto/missingstdlib"
 
 arr := []int{1, 2, 3, 1, 4}
-fmt.Println(ms.ReplaceFirstInSlice(arr, 1, 9)) // Output: [9 2 3 1 4]
+fmt.Println(ms.ReplaceFirst(arr, 1, 9)) // Output: [9 2 3 1 4]
 ```
 
-### ReplaceLastInSlice
+### ReplaceLast
 
 Replaces the last occurrence of `needle` with `replacement` in a slice.
 
@@ -85,7 +66,7 @@ Replaces the last occurrence of `needle` with `replacement` in a slice.
 import ms "github.com/xyproto/missingstdlib"
 
 arr := []int{1, 2, 3, 1, 4}
-fmt.Println(ms.ReplaceLastInSlice(arr, 1, 9)) // Output: [1 2 3 9 4]
+fmt.Println(ms.ReplaceLast(arr, 1, 9)) // Output: [1 2 3 9 4]
 ```
 
 ### Partition

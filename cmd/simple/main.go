@@ -9,19 +9,19 @@ import (
 
 func main() {
 	// Capitalize
-	fmt.Println(ms.Capitalize("hello world")) // Output: Hello world
+	fmt.Println(string(ms.Capitalize([]rune("hello world")))) // Output: Hello world
 
 	// Reverse
-	fmt.Println(ms.Reverse([]rune("Hello")))      // Output: [o l l e H]
-	fmt.Println(ms.Reverse([]int{1, 2, 3, 4, 5})) // Output: [5 4 3 2 1]
-	fmt.Println(ms.Reverse([]float64{1.1, 2.2, 3.3, 4.4, 5.5})) // Output: [5.5 4.4 3.3 2.2 1.1]
+	fmt.Println(ms.Reverse([]rune("Hello")))                       // Output: [o l l e H]
+	fmt.Println(ms.Reverse([]int{1, 2, 3, 4, 5}))                  // Output: [5 4 3 2 1]
+	fmt.Println(ms.Reverse([]float64{1.1, 2.2, 3.3, 4.4, 5.5}))    // Output: [5.5 4.4 3.3 2.2 1.1]
 	fmt.Println(ms.Reverse([]string{"apple", "banana", "cherry"})) // Output: [cherry banana apple]
 
 	// ReplaceFirst
-	fmt.Println(ms.ReplaceFirst("hello world", "l", "x")) // Output: hexlo world
+	fmt.Println(ms.ReplaceFirst([]rune("hello world"), 'l', 'x')) // Output: hexlo world
 
 	// ReplaceLast
-	fmt.Println(ms.ReplaceLast("hello world", "l", "x")) // Output: hello worxd
+	fmt.Println(ms.ReplaceLast([]rune("hello world"), 'l', 'x')) // Output: hello worxd
 
 	// Partition
 	arr := []int{1, 2, 3, 4, 5}
@@ -39,14 +39,14 @@ func main() {
 	// Flatten
 	nested := [][]int{{1, 2}, {3, 4}, {5, 6}}
 	fmt.Println(ms.Flatten(nested)) // Output: [1 2 3 4 5 6]
-	
+
 	nestedFloat := [][]float64{{1.1, 2.2}, {3.3, 4.4}, {5.5, 6.6}}
 	fmt.Println(ms.Flatten(nestedFloat)) // Output: [1.1 2.2 3.3 4.4 5.5 6.6]
 
 	// Unique
 	arr = []int{1, 2, 2, 3, 4, 4, 5}
 	fmt.Println(ms.Unique(arr)) // Output: [1 2 3 4 5]
-	
+
 	strArr := []string{"apple", "banana", "apple", "cherry"}
 	fmt.Println(ms.Unique(strArr)) // Output: [apple banana cherry]
 
@@ -64,7 +64,7 @@ func main() {
 	a = []int{1, 2, 3}
 	s := []string{"a", "b", "c"}
 	fmt.Println(ms.Zip(a, s)) // Output: [{1 a} {2 b} {3 c}]
-	
+
 	// Contains
 	fmt.Println(ms.Contains(arr, 3)) // Output: true
 
