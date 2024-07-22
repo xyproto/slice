@@ -15,16 +15,6 @@ go get github.com/xyproto/slice
 
 Here are some examples of how to use the functions provided by `slice`.
 
-### Capitalize
-
-Capitalizes the first letter of a slice of runes and returns a new slice.
-
-```go
-import "github.com/xyproto/slice"
-
-fmt.Println(string(slice.Capitalize([]rune("hello world")))) // Output: Hello world
-```
-
 ### Reverse
 
 Creates and returns a new slice that is the reverse of the input slice.
@@ -196,6 +186,16 @@ import "github.com/xyproto/slice"
 arr := []int{1, 2, 3, 4, 5}
 sum := slice.Reduce(arr, 0, func(acc, n int) int { return acc + n })
 fmt.Println(sum) // Output: 15
+```
+
+### Capitalize
+
+Capitalizes the first letter of a slice of runes and returns a new slice.
+
+```go
+import "github.com/xyproto/slice"
+
+fmt.Println(string(slice.Capitalize([]rune("hello world")))) // Output: Hello world
 ```
 
 ## Contributing
