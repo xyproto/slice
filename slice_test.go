@@ -1,4 +1,4 @@
-package missingstdlib
+package slice
 
 import (
 	"strings"

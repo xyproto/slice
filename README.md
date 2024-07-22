@@ -1,28 +1,28 @@
 
-# missingstdlib
+# slice
 
-`missingstdlib` is a Go package that provides a collection of utility functions that are often needed but missing from the Go standard library. This package includes functions for manipulating slices, such as reversing, shuffling, finding unique elements, and more.
+`slice` is a Go package that provides a collection of utility functions that are often needed but missing from the Go standard library. This package includes functions for manipulating slices, such as reversing, shuffling, finding unique elements, and more.
 
 ## Installation
 
 To install the package, run:
 
 ```sh
-go get github.com/xyproto/missingstdlib
+go get github.com/xyproto/slice
 ```
 
 ## Usage
 
-Here are some examples of how to use the functions provided by `missingstdlib`.
+Here are some examples of how to use the functions provided by `slice`.
 
 ### Capitalize
 
 Capitalizes the first letter of a slice of runes and returns a new slice.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
-fmt.Println(string(ms.Capitalize([]rune("hello world")))) // Output: Hello world
+fmt.Println(string(slice.Capitalize([]rune("hello world")))) // Output: Hello world
 ```
 
 ### Reverse
@@ -30,9 +30,9 @@ fmt.Println(string(ms.Capitalize([]rune("hello world")))) // Output: Hello world
 Creates and returns a new slice that is the reverse of the input slice.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
-fmt.Println(ms.Reverse([]int{1, 2, 3, 4, 5})) // Output: [5 4 3 2 1]
+fmt.Println(slice.Reverse([]int{1, 2, 3, 4, 5})) // Output: [5 4 3 2 1]
 ```
 
 ### ReverseInPlace
@@ -40,10 +40,10 @@ fmt.Println(ms.Reverse([]int{1, 2, 3, 4, 5})) // Output: [5 4 3 2 1]
 Reverses a slice in-place.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 arr := []int{1, 2, 3, 4, 5}
-ms.ReverseInPlace(arr)
+slice.ReverseInPlace(arr)
 fmt.Println(arr) // Output: [5 4 3 2 1]
 ```
 
@@ -52,10 +52,10 @@ fmt.Println(arr) // Output: [5 4 3 2 1]
 Replaces the first occurrence of `needle` with `replacement` in a slice.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 arr := []int{1, 2, 3, 1, 4}
-fmt.Println(ms.ReplaceFirst(arr, 1, 9)) // Output: [9 2 3 1 4]
+fmt.Println(slice.ReplaceFirst(arr, 1, 9)) // Output: [9 2 3 1 4]
 ```
 
 ### ReplaceLast
@@ -63,10 +63,10 @@ fmt.Println(ms.ReplaceFirst(arr, 1, 9)) // Output: [9 2 3 1 4]
 Replaces the last occurrence of `needle` with `replacement` in a slice.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 arr := []int{1, 2, 3, 1, 4}
-fmt.Println(ms.ReplaceLast(arr, 1, 9)) // Output: [1 2 3 9 4]
+fmt.Println(slice.ReplaceLast(arr, 1, 9)) // Output: [1 2 3 9 4]
 ```
 
 ### Partition
@@ -74,10 +74,10 @@ fmt.Println(ms.ReplaceLast(arr, 1, 9)) // Output: [1 2 3 9 4]
 Partitions a slice into two slices based on a predicate function.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 arr := []int{1, 2, 3, 4, 5}
-even, odd := ms.Partition(arr, func(n int) bool { return n%2 == 0 })
+even, odd := slice.Partition(arr, func(n int) bool { return n%2 == 0 })
 fmt.Println(even, odd) // Output: [2 4] [1 3 5]
 ```
 
@@ -86,11 +86,11 @@ fmt.Println(even, odd) // Output: [2 4] [1 3 5]
 Returns the intersection of two slices.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 a := []int{1, 2, 3, 4}
 b := []int{3, 4, 5, 6}
-fmt.Println(ms.Intersection(a, b)) // Output: [3 4]
+fmt.Println(slice.Intersection(a, b)) // Output: [3 4]
 ```
 
 ### Difference
@@ -98,11 +98,11 @@ fmt.Println(ms.Intersection(a, b)) // Output: [3 4]
 Returns the difference between two slices.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 a := []int{1, 2, 3, 4}
 b := []int{3, 4, 5, 6}
-fmt.Println(ms.Difference(a, b)) // Output: [1 2]
+fmt.Println(slice.Difference(a, b)) // Output: [1 2]
 ```
 
 ### Flatten
@@ -110,10 +110,10 @@ fmt.Println(ms.Difference(a, b)) // Output: [1 2]
 Flattens a nested slice into a single-level slice.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 nested := [][]int{{1, 2}, {3, 4}, {5, 6}}
-fmt.Println(ms.Flatten(nested)) // Output: [1 2 3 4 5 6]
+fmt.Println(slice.Flatten(nested)) // Output: [1 2 3 4 5 6]
 ```
 
 ### Unique
@@ -121,10 +121,10 @@ fmt.Println(ms.Flatten(nested)) // Output: [1 2 3 4 5 6]
 Removes duplicate elements from a slice.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 arr := []int{1, 2, 2, 3, 4, 4, 5}
-fmt.Println(ms.Unique(arr)) // Output: [1 2 3 4 5]
+fmt.Println(slice.Unique(arr)) // Output: [1 2 3 4 5]
 ```
 
 ### Shuffle
@@ -132,10 +132,10 @@ fmt.Println(ms.Unique(arr)) // Output: [1 2 3 4 5]
 Randomly shuffles the elements of a slice.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 arr := []int{1, 2, 3, 4, 5}
-ms.Shuffle(arr)
+slice.Shuffle(arr)
 fmt.Println(arr) // Output: [3 5 4 1 2] (example, actual output may vary)
 ```
 
@@ -144,11 +144,11 @@ fmt.Println(arr) // Output: [3 5 4 1 2] (example, actual output may vary)
 Combines multiple slices into a slice of tuples.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 a := []int{1, 2, 3}
 b := []string{"a", "b", "c"}
-fmt.Println(ms.Zip(a, b)) // Output: [{1 a} {2 b} {3 c}]
+fmt.Println(slice.Zip(a, b)) // Output: [{1 a} {2 b} {3 c}]
 ```
 
 ### Contains
@@ -156,10 +156,10 @@ fmt.Println(ms.Zip(a, b)) // Output: [{1 a} {2 b} {3 c}]
 Checks if a slice contains a specific element.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 arr := []int{1, 2, 3, 4, 5}
-fmt.Println(ms.Contains(arr, 3)) // Output: true
+fmt.Println(slice.Contains(arr, 3)) // Output: true
 ```
 
 ### Filter
@@ -167,10 +167,10 @@ fmt.Println(ms.Contains(arr, 3)) // Output: true
 Filters a slice based on a predicate function.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 arr := []int{1, 2, 3, 4, 5}
-even := ms.Filter(arr, func(n int) bool { return n%2 == 0 })
+even := slice.Filter(arr, func(n int) bool { return n%2 == 0 })
 fmt.Println(even) // Output: [2 4]
 ```
 
@@ -179,10 +179,10 @@ fmt.Println(even) // Output: [2 4]
 Applies a function to each element in a slice and returns a new slice.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 strArr := []string{"hello", "world"}
-upperStrArr := ms.Map(strArr, strings.ToUpper)
+upperStrArr := slice.Map(strArr, strings.ToUpper)
 fmt.Println(upperStrArr) // Output: [HELLO WORLD]
 ```
 
@@ -191,10 +191,10 @@ fmt.Println(upperStrArr) // Output: [HELLO WORLD]
 Reduces a slice to a single value using a reduction function.
 
 ```go
-import ms "github.com/xyproto/missingstdlib"
+import "github.com/xyproto/slice"
 
 arr := []int{1, 2, 3, 4, 5}
-sum := ms.Reduce(arr, 0, func(acc, n int) int { return acc + n })
+sum := slice.Reduce(arr, 0, func(acc, n int) int { return acc + n })
 fmt.Println(sum) // Output: 15
 ```
 
