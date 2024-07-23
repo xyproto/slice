@@ -1,4 +1,4 @@
-![slice logo](img/logo.png)
+<img alt="Slice logo" src="imag/logo.png" width=128>
 
 # slice
 
