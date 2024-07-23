@@ -1,3 +1,4 @@
+![slice logo](img/slice.png)
 
 # slice
 
