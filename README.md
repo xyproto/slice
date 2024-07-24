@@ -1,6 +1,6 @@
 # Slice
 
-<img alt="Slice logo" src="img/logo.png" width=192 align=right>
+<!--<img alt="Slice logo" src="img/logo.png" width=192 align=right>-->
 
 `slice` is a Go package that provides a collection of utility functions that are often needed but missing from the Go standard library. This package includes functions for manipulating slices, such as reversing, shuffling, finding unique elements, and more.
 
